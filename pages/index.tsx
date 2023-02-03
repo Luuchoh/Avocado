@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { getAll } from '../services/avocado.services'
-import Navbar from '../componets/Navbar/Navbar'
-
-
 
 const Home = () => {
   const [productList, setProductList] = useState<TProduct[]>([])
@@ -18,7 +15,6 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
       <h1>Avocados</h1>
       <>
         {productList?.map((avocado: TProduct) => (
