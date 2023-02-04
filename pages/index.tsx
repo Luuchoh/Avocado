@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { getAll } from '../services/avocado.services'
+
+import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
+import Layout from '@components/Layout/Layout'
+import ProductList from '@components/ProductList/ProductList'
+import { getAll } from '@services/avocado.services'
 
 const Home = () => {
   const [productList, setProductList] = useState<TProduct[]>([])
@@ -14,14 +18,10 @@ const Home = () => {
   }, [])
 
   return (
-    <div>
-      <h1>Avocados</h1>
-      <>
-        {productList?.map((avocado: TProduct) => (
-          <div key={avocado.id}>{avocado.name}</div>
-        ))}
-      </>
-    </div>
+    <Layout>
+      <KawaiiHeader />
+      <ProductList products={productList} />
+    </Layout>
   )
 }
 

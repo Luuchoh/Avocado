@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { getOne } from 'services/avocado.services'
+
+import Layout from '@components/Layout/Layout'
+import { getOne } from '@services/avocado.services'
+import ProductSummary from '@components/ProductSummary/ProductSummary'
 
 const ProductItem = () => {
   const [product, setProduct] = useState<TProduct>()
@@ -16,10 +19,9 @@ const ProductItem = () => {
   }, [productId])
 
   return (
-    <>
-      <div>ProductItem: { productId }</div>
-      <p>Product name: { product?.name }</p>
-    </>
+    <Layout>
+      {product == null ? null : <ProductSummary product={product} />}
+    </Layout>
 
   )
 }

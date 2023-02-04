@@ -4,7 +4,9 @@
     "paths": {
       "@database": ["database/db.ts"],
       "@cors": [ "cors-middleware.ts"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@store/*": ["store/*"],
+      "@services/*": ["services/*"]
     },
     "target": "es6",
     "lib": [

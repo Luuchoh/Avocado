@@ -2,14 +2,14 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="en">
       <Head> 
         {/* {favicon} */}
         {/* webfont */}
         {/* stylesheet */}
         {/* script/js */}
       </Head>
-      <body>
+      <body className="my-body-class">
         <Main />
         <NextScript />
       </body>

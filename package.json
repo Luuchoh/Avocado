@@ -16,9 +16,12 @@
   "dependencies": {
     "@types/cors": "^2.8.13",
     "cors": "^2.8.5",
+    "isomorphic-unfetch": "^4.0.2",
     "next": "^13.1.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
@@ -36,7 +39,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && yarn type-check"
+      "pre-commit": "pretty-quick --staged && yarn type-check",
+      "pre-push": "yarn type-check"
     }
   }
 }
