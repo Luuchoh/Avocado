@@ -1,10 +1,10 @@
-const path = '/api/avo'
+const path = 'https://avocado-commerce-5npd6ofam-luuchoh.vercel.app/api'
 
 const getAll = async (): Promise<TProduct[]> => {
   try {
-  const res = await fetch(path)
-  const data = await res.json()
-  return data.data
+  const res = await fetch(`${path}/avo`)
+  const { data }: TAPIAvoResponse = await res.json()
+  return data
   } catch (error: any) {
     throw new Error(error)
   }
@@ -12,12 +12,23 @@ const getAll = async (): Promise<TProduct[]> => {
 
 const getOne = async (id: string): Promise<TProduct> => {
   try {
-    const response = await fetch(`${path}/${id}`)
-    const avocado = await response.json()
-    return avocado
+    const response = await fetch(`${path}/avo/${id}`)
+    const data: TProduct = await response.json()
+    return data
   } catch (error: any) {
     throw new Error(error)
   }
 }
 
-export { getAll, getOne }
+const YesOrNotResponse = async () => {
+  try {
+    const res = await fetch(`${path}/yes-or-not`)
+    const { data }: YesOrNoApiResponse = await res.json()
+  
+    return data
+  } catch (error: any) {
+    throw new Error(error)
+  }
+}
+
+export { getAll, getOne, YesOrNotResponse }

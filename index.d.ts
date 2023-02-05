@@ -32,3 +32,7 @@ type TAPIAvoResponse = {
   data: TProduct[]
   error?: string
 }
+
+type YesOrNoApiResponse = {
+  data: 'yes' | 'no'
+}
