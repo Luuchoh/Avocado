@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
 
 import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
 import Layout from '@components/Layout/Layout'
 import ProductList from '@components/ProductList/ProductList'
 import { getAll } from '@services/avocado.services'
-import Link from 'next/link'
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const productList = await getAll()
 
   return {

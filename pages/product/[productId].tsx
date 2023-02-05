@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import React from 'react'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@components/Layout/Layout'
-import { getOne } from '@services/avocado.services'
+import { getAll, getOne } from '@services/avocado.services'
 import ProductSummary from '@components/ProductSummary/ProductSummary'
 
-const ProductItem = () => {
-  const [product, setProduct] = useState<TProduct>()
-  const { query: { productId } } = useRouter()
+export const getStaticPaths: GetStaticPaths = async () => {
+  const productList = await getAll()
+  const paths = productList.map(({ id }) => ({ params: { productId: id } }))
 
-  const getAvocado = async () => {
-    const avocado =  await getOne(productId as string)
-    setProduct(avocado)
+  return {
+    paths,
+    fallback: true
   }
+}
 
-  useEffect(() => {
-    productId && getAvocado()
-  }, [productId])
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const productId = params?.productId;
+  let product = await getOne(productId as string)
+  
+  return {
+    props: {
+      product,
+    }, // will be passed to the page component as props
+  }
+}
 
+const ProductItem = ({ product }: { product: TProduct }) => {
   return (
     <Layout>
       {product == null ? null : <ProductSummary product={product} />}
