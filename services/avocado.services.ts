@@ -1,4 +1,4 @@
-const path = 'https://avocado-commerce-5npd6ofam-luuchoh.vercel.app/api'
+const path = 'https://avocado-commerce.vercel.app/api'
 
 const getAll = async (): Promise<TProduct[]> => {
   try {
@@ -24,7 +24,8 @@ const YesOrNotResponse = async () => {
   try {
     const res = await fetch(`${path}/yes-or-not`)
     const { data }: YesOrNoApiResponse = await res.json()
-  
+    console.log("🚀 ~ file: avocado.services.ts:27 ~ YesOrNotResponse ~ data", data)
+    
     return data
   } catch (error: any) {
     throw new Error(error)
