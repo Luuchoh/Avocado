@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 
 import { Header, Button } from 'semantic-ui-react'
 import Layout from '@components/Layout/Layout'
 import { YesOrNotResponse } from '@services/avocado.services'
 
-
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const initialResult = await YesOrNotResponse()
   return {
     props: {
