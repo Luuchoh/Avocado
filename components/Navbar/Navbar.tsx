@@ -11,9 +11,9 @@ const Navbar = () => {
   const { pathname } = useRouter()
   const { count: cartCount } = useCart()
   return (
-    <Menu size="huge" borderless pointing as="header">
+    (<Menu size="huge" borderless pointing as="header">
       <Container text>
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <Menu.Item
             active={pathname === '/'}
             title="Inicio | Todos los productos"
@@ -23,7 +23,7 @@ const Navbar = () => {
           </Menu.Item>
         </Link>
         <Menu.Menu position="right">
-          <Link href="/cart" passHref>
+          <Link href="/cart" passHref legacyBehavior>
             <Menu.Item active={pathname === '/cart'}>
               <ShoppingCartIcon cartCount={cartCount} name="Canasta" />
             </Menu.Item>
@@ -35,8 +35,8 @@ const Navbar = () => {
           font-size: 1.5rem;
         }
       `}</style>
-    </Menu>
-  )
+    </Menu>)
+  );
 }
 
 export default Navbar
